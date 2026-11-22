@@ -1,6 +1,14 @@
 # language: de
 Funktionalität: Container-Kacheln aus Docker-Labels erstellen und bearbeiten
 
+  Szenario: Mehrere Seiten mit leeren Gruppen speichern
+    Angenommen die Docker-Erkennung ist aktiviert
+    Und mehrere Seiten enthalten Gruppen ohne Kacheln
+    Wenn ich das Dashboard speichere
+    Dann enthält die Antwort auf "PUT /api/config" für diese Gruppen "tiles": []
+    Und das Dashboard wird ohne Fehlermeldung angezeigt
+    Und die leeren Gruppen bleiben nach dem Neuladen erhalten
+
   Szenario: Homepage-Labels nach dem Update ausdrücklich aktivieren
     Angenommen eine bestehende Konfiguration enthält "homepage" nur in "labelPrefixes"
     Und ein Container hat nur Homepage-Labels

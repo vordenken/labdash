@@ -175,7 +175,8 @@ func clonePages(in []config.Page) []config.Page {
 		out[i].Groups = make([]config.Group, len(p.Groups))
 		for j, g := range p.Groups {
 			out[i].Groups[j] = g
-			out[i].Groups[j].Tiles = append([]config.Tile(nil), g.Tiles...)
+			out[i].Groups[j].Tiles = make([]config.Tile, len(g.Tiles))
+			copy(out[i].Groups[j].Tiles, g.Tiles)
 		}
 	}
 	return out

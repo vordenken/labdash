@@ -1,5 +1,10 @@
-1.0.0
+1.0.1
 ---
+### labdash 1.0.1
+- Preserve empty tile lists as `[]` when Docker discovery merges the layout, fixing a render error after saving pages with empty groups.
+
+## 1.0.0
+
 ### labdash 1.0.0
 The first stable release: a fast, self-hosted dashboard for links, clocks and Docker containers in a single Go executable without a database.
 
