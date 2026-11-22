@@ -38,10 +38,13 @@ shipped in a new build, including builds handed off for deployment. Follow
 SemVer and keep the previous notes under `## X.Y.Z`.
 
 Also update the image tag in [compose.yaml](compose.yaml); CI fails if it
-does not match. To release, merge to `main` and push the tag `vX.Y.Z`. The
-release workflow re-runs CI, checks that the tag matches `semver.txt`,
-publishes the multi-architecture image to GHCR and creates a GitHub release
-with the notes for that version.
+does not match. A new version merged to `main` triggers CI and, after all
+checks pass, publishes the multi-architecture image, Git tag and GitHub release
+automatically. Pushes to `feature/*` create beta releases for application
+changes; beta images do not update stable tags. Documentation- or test-only
+changes do not create a release. To retry a failed release or publish the
+initial version, run the **CI** workflow manually on the appropriate branch.
+Existing tags are never moved, and published releases are not overwritten.
 
 The Docker build reads the first line. The resulting build reports that
 version in Settings, the startup log and `/healthz`. An explicit
