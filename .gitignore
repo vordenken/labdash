@@ -1,0 +1,9 @@
+/labdash
+/dev/
+*.bak
+.DS_Store
+/.impeccable/
+/data/
+.env
+.env.*
+!.env.example

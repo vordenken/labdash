@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "title": "Northstar Lab",
+  "theme": "dark",
+  "appearance": { "accent": "indigo", "hero": true, "name": "Morgan" },
+  "pages": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "groups": [
+        {
+          "id": "everyday",
+          "title": "Everyday",
+          "tiles": [
+            { "id": "media", "type": "link", "name": "Media Library", "description": "Films and series", "icon": "mdi-play-box-outline", "href": "https://media.example.org", "container": "demo-media" },
+            { "id": "photos", "type": "link", "name": "Photo Archive", "description": "Shared albums", "icon": "mdi-image-multiple-outline", "href": "https://photos.example.org", "container": "demo-photos" },
+            { "id": "wiki", "type": "link", "name": "Lab Wiki", "description": "Notes and runbooks", "icon": "mdi-book-open-variant", "href": "https://wiki.example.org" },
+            { "id": "reading", "type": "link", "name": "Reading Room", "description": "Books and audiobooks", "icon": "mdi-bookshelf", "href": "https://books.example.org", "container": "demo-reading" },
+            { "id": "recipes", "type": "link", "name": "Recipe Box", "description": "Meal plans and recipes", "icon": "mdi-silverware-fork-knife", "href": "https://recipes.example.org" }
+          ]
+        },
+        {
+          "id": "infra",
+          "title": "Infrastructure",
+          "tiles": [
+            { "id": "metrics", "type": "link", "name": "Metrics", "description": "System charts", "icon": "mdi-chart-line", "href": "https://metrics.example.org", "container": "demo-metrics" },
+            { "id": "backups", "type": "link", "name": "Backup Vault", "description": "Restore points", "icon": "mdi-database-lock-outline", "href": "https://backups.example.org", "container": "demo-backups" },
+            { "id": "gateway", "type": "link", "name": "Network Gateway", "description": "Routing and DNS", "icon": "mdi-router-network", "href": "https://network.example.org", "container": "demo-gateway" },
+            { "id": "logs", "type": "link", "name": "Log Explorer", "description": "Search service events", "icon": "mdi-text-search", "href": "https://logs.example.org", "container": "demo-logs" },
+            { "id": "clock", "type": "clock" }
+          ]
+        }
+      ]
+    },
+    { "id": "maintenance", "title": "Maintenance", "groups": [
+      { "id": "maintenance-links", "title": "Runbooks", "tiles": [
+        { "id": "restore", "type": "link", "name": "Restore Checklist", "icon": "mdi-clipboard-check-outline", "href": "https://restore.example.org" }
+      ] }
+    ] }
+  ],
+  "discovery": { "docker": false }
+}

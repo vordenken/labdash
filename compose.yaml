@@ -1,0 +1,20 @@
+services:
+  labdash:
+    image: ghcr.io/vordenken/labdash:1.0.0
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      LABDASH_AUTH_PASSWORD: "${LABDASH_AUTH_PASSWORD:?Set a dashboard password}"
+      LABDASH_SESSION_SECRET: "${LABDASH_SESSION_SECRET:?Set a random signing secret}"
+      # Local HTTP only. Use secure cookies when serving over HTTPS.
+      LABDASH_SECURE_COOKIE: "false"
+      LABDASH_DOCKER_SOCKET: "off"
+    volumes:
+      - labdash-data:/data
+      # Optional: your own tile images, e.g. ./icons/jellyfin.svg for the icon
+      # "jellyfin". They take precedence over downloaded icons.
+      # - ./icons:/data/icons:ro
+    restart: unless-stopped
+
+volumes:
+  labdash-data:

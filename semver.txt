@@ -1,0 +1,20 @@
+1.0.0
+---
+### labdash 1.0.0
+The first stable release: a fast, self-hosted dashboard for links, clocks and Docker containers in a single Go executable without a database.
+
+### Highlights
+- Arrange tiles into pages and groups in the browser; container status updates live without a page refresh.
+- Discover services from labdash and, optionally, Homepage Docker labels.
+- Open a stopped or unhealthy container directly in your container management tool, such as Arcane, with `LABDASH_CONTAINER_LINK`.
+- Works offline: the server downloads each tile icon once and keeps it; the browser only talks to labdash. Turn downloads off with `LABDASH_ICON_DOWNLOAD=false`, or serve your own images from `/data/icons`.
+- English and German interface, light and dark themes.
+- Multi-architecture images (`linux/amd64`, `linux/arm64`) at `ghcr.io/vordenken/labdash` with the tags `1.0.0`, `1.0`, `1` and `latest`.
+
+### Security
+- Password login with signed session cookies and a login rate limit that cannot be bypassed with forged `X-Forwarded-For` headers; trust reverse proxies explicitly with `LABDASH_TRUSTED_PROXIES`.
+- Strict Content Security Policy, cross-origin write protection and rejection of `javascript:` links.
+- Container start, stop and restart are off by default and require password auth.
+- Refuse to start on invalid settings instead of silently using defaults.
+
+See the README for setup and SECURITY.md for deployment precautions.

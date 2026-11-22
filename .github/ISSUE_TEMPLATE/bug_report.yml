@@ -1,0 +1,42 @@
+name: Bug report
+description: Something does not work as described.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include passwords, session secrets, real dashboard layouts or internal hostnames.
+  - type: input
+    id: version
+    attributes:
+      label: labdash version
+      description: Shown at the bottom of Settings, in the startup log and at /healthz.
+      placeholder: 0.4.0
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Settings → Edit dashboard
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, reverse proxy, Docker integration on or off, relevant LABDASH_* settings (without secrets).
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Container log lines around the problem, with secrets removed.
+      render: text

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>labdash</title>
+  <link rel="icon" type="image/svg+xml" href="/mark.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-theme="dark">
+  <header class="topbar glass">
+    <div class="brand">
+      <img class="logo" src="/mark.svg" width="36" height="36" alt="">
+      <div class="brand-text">
+        <h1 id="title">labdash</h1>
+        <p class="brand-sub" id="brand-sub" hidden><span class="time" id="hero-time"></span><span class="sep">·</span><span id="hero-date"></span></p>
+      </div>
+    </div>
+    <div class="search-field" role="search">
+      <label for="filter" class="visually-hidden" data-i18n>Filter tiles</label>
+      <span class="search-icon" aria-hidden="true"></span>
+      <input id="filter" type="search" placeholder="Search…" data-i18n-attrs="placeholder" autocomplete="off" spellcheck="false" aria-describedby="filter-hint">
+      <span class="kbd" id="filter-hint" aria-hidden="true">⌘K</span>
+      <button id="filter-clear" class="btn icon" type="button" aria-label="Clear search" title="Clear search" data-i18n-attrs="aria-label title" hidden></button>
+    </div>
+    <div class="header-tools">
+      <div id="hero-stats" class="stats"></div>
+      <div class="actions">
+        <span id="docker-state" class="pill" hidden role="status"><span class="dot"></span><span class="txt"></span></span>
+        <div class="settings">
+          <button id="btn-settings" class="btn icon" type="button" aria-label="Settings" title="Settings" aria-expanded="false" aria-controls="settings-panel" data-i18n-attrs="aria-label title"></button>
+          <section id="settings-panel" class="settings-panel" aria-labelledby="settings-title" hidden>
+            <h2 id="settings-title" data-i18n>Settings</h2>
+            <label class="field">
+              <span data-i18n>Language</span>
+              <select id="settings-language">
+                <option value="" data-i18n>Browser default</option>
+                <option value="en" lang="en">English</option>
+                <option value="de" lang="de">Deutsch</option>
+              </select>
+            </label>
+            <p id="settings-language-hint" class="field-help" data-i18n hidden>Finish editing to change the language.</p>
+            <label class="field">
+              <span data-i18n>Color scheme</span>
+              <select id="settings-theme">
+                <option value="" data-i18n>Dashboard default</option>
+                <option value="light" data-i18n>Light</option>
+                <option value="dark" data-i18n>Dark</option>
+              </select>
+            </label>
+            <button id="btn-edit" class="btn" type="button" aria-keyshortcuts="E" title="Edit (E)" data-i18n-attrs="title" hidden><span data-i18n>Edit dashboard</span></button>
+            <p id="settings-version" class="settings-version" hidden></p>
+          </section>
+        </div>
+        <button id="btn-logout" class="btn icon" aria-label="Sign out" title="Sign out" data-i18n-attrs="aria-label title" hidden></button>
+      </div>
+    </div>
+  </header>
+  <nav id="pages" class="pages" aria-label="Pages" data-i18n-attrs="aria-label"></nav>
+
+  <main>
+    <section id="setup" class="setup" aria-labelledby="setup-title" hidden></section>
+    <div id="app" class="dashboard"></div>
+  </main>
+
+  <section id="edit-toolbar" class="edit-toolbar" aria-labelledby="edit-toolbar-title" hidden>
+    <div class="toolbar-summary">
+      <h2 id="edit-toolbar-title" data-i18n>Editing dashboard</h2>
+      <p class="hint"><span data-i18n>Drag tiles or use the arrow buttons</span> <span class="exit-hint"><kbd class="kbd">Esc</kbd> <span data-i18n>to exit</span></span></p>
+    </div>
+    <div class="toolbar-controls">
+      <div class="toolbar-tools">
+        <button id="btn-add-tile" class="btn"><span data-i18n>Tile</span></button>
+        <button id="btn-add-group" class="btn"><span data-i18n>Group</span></button>
+        <button id="btn-add-page" class="btn"><span data-i18n>Page</span></button>
+        <button id="btn-appearance" class="btn"><span data-i18n>Appearance</span></button>
+        <button id="btn-discovery" class="btn"><span data-i18n>Docker discovery</span></button>
+        <button id="btn-json" class="btn"><span>JSON</span></button>
+      </div>
+      <div class="toolbar-actions">
+        <button id="btn-cancel" class="btn"><span data-i18n>Discard</span></button>
+        <button id="btn-save" class="btn primary"><span data-i18n>Save</span> <span id="dirty-badge" class="badge" hidden aria-label="Unsaved changes" data-i18n-attrs="aria-label">●</span></button>
+      </div>
+    </div>
+  </section>
+
+  <dialog id="dialog"></dialog>
+  <dialog id="container-status" aria-labelledby="container-status-title">
+    <form method="dialog">
+      <h2 id="container-status-title" tabindex="-1" autofocus></h2>
+      <p class="status-scope" data-i18n>Includes containers without a dashboard tile.</p>
+      <ul id="container-status-list" class="container-status-list"></ul>
+      <p id="container-status-empty" class="status-scope" data-i18n>No containers with this status.</p>
+      <div class="form-actions"><button class="btn" data-i18n>Close</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast glass" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

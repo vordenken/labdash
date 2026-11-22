@@ -1,0 +1,9 @@
+**
+!go.mod
+!semver.txt
+!cmd/
+!cmd/**
+!internal/
+!internal/**
+!web/
+!web/**
