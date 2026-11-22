@@ -42,7 +42,7 @@ open **Settings → Edit dashboard**. Pages separate collections of groups and
 tiles; search filters tiles on the current page. The interface supports
 English and German.
 
-The Compose file uses the `1.0.0` image. The `1.0`, `1` and `latest` tags track
+The Compose file uses the `1.0.1` image. The `1.0`, `1` and `latest` tags track
 newer releases. Layout data is stored in the `labdash-data` volume. Back it up
 before upgrading; `docker compose down -v` deletes it.
 
@@ -73,6 +73,12 @@ labels:
 
 A name or link is enough. Tiles join groups by title, and new groups appear on
 the first page. `javascript:` and similar unsafe links are ignored.
+
+To place discovered containers on another page, create a group with a unique
+title on that page and use that title in `labdash.group`. Pages cannot currently
+be defined through environment variables or Docker labels. For a preconfigured
+layout, place `config.json` in a writable directory mounted at `/data`. Mount
+the directory rather than the file because saves replace the file atomically.
 
 Homepage label discovery is off by default, including after an upgrade. Enable
 **Settings → Edit dashboard → Docker discovery → Discover from Homepage

@@ -75,6 +75,21 @@ func TestMergeSkipsBoundAndHiddenAndMergesGroups(t *testing.T) {
 	}
 }
 
+func TestMergePreservesEmptyTiles(t *testing.T) {
+	cfg := config.Default()
+	cfg.Pages[0].Groups = []config.Group{{ID: "tools", Title: "Tools", Tiles: []config.Tile{}}}
+	cfg.Pages = append(cfg.Pages, config.Page{
+		ID: "media", Title: "Media",
+		Groups: []config.Group{{ID: "services", Title: "Services", Tiles: []config.Tile{}}},
+	})
+	pages := Merge(cfg, docker.Snapshot{})
+	for _, page := range pages {
+		if page.Groups[0].Tiles == nil || len(page.Groups[0].Tiles) != 0 {
+			t.Fatalf("empty group must retain a non-nil empty tile slice: %+v", page)
+		}
+	}
+}
+
 func TestHomepageDiscoveryRequiresOptIn(t *testing.T) {
 	snap := docker.Snapshot{Containers: map[string]*docker.Container{
 		"native":   ctr("native", map[string]string{"labdash.name": "Native"}),
